@@ -5,6 +5,7 @@
 [![Cloudflare Workers](https://img.shields.io/badge/Platform-Cloudflare%20Workers-orange.svg)](https://workers.cloudflare.com/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Uptime](https://img.shields.io/badge/Uptime-100%25-brightgreen.svg)](https://techstack-fingerprinter.topaisaas.workers.dev/v1/health)
+[![RapidAPI](https://img.shields.io/badge/RapidAPI-Subscribe%20Free-blue.svg)](https://rapidapi.com/topaisaasdev/api/techstack-fingerprinter-api/pricing)
 
 BuiltWith costs **$495/month**, which is prohibitive for growth teams, outbound agencies (**Clay.com, Smartlead, Instantly**), and automated scraping pipelines.
 
