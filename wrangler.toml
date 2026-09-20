@@ -1,0 +1,7 @@
+name = "techstack-fingerprinter"
+main = "src/index.ts"
+compatibility_date = "2024-09-01"
+account_id = "c2f6458a58ca3c80c5d0c3359baaa3cb"
+
+[observability]
+enabled = true

@@ -1,0 +1,137 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "TechStack Fingerprinter API",
+    "description": "Sub-millisecond technographic scanner and website tech stack detector for cold outreach, Clay.com, and AI sales agents.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "TopAI SaaS Studio",
+      "email": "top.ai.saas@gmail.com",
+      "url": "https://techstack-fingerprinter.topaisaas.workers.dev"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://techstack-fingerprinter.topaisaas.workers.dev",
+      "description": "Cloudflare Workers Production Edge"
+    }
+  ],
+  "paths": {
+    "/v1/health": {
+      "get": {
+        "summary": "Healthcheck",
+        "description": "Service health and uptime verification.",
+        "responses": {
+          "200": {
+            "description": "Service is healthy and active."
+          }
+        }
+      }
+    },
+    "/v1/fingerprint": {
+      "post": {
+        "summary": "Fingerprint Website Tech Stack",
+        "description": "Scans a website or domain in milliseconds, detecting CMS, eCommerce, Frameworks, Analytics, CRM, CDN, and Payment gateways.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": { "type": "string", "example": "https://gymshark.com", "description": "Target website URL or domain" },
+                  "domain": { "type": "string", "example": "gymshark.com", "description": "Alternative domain field" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Comprehensive technographic fingerprint",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": true,
+                  "result": {
+                    "url": "https://gymshark.com",
+                    "domain": "gymshark.com",
+                    "status_code": 200,
+                    "response_time_ms": 52,
+                    "technologies_count": 9,
+                    "categories": {
+                      "ecommerce": ["Shopify"],
+                      "cms": [],
+                      "frameworks": ["React"],
+                      "analytics_tracking": ["Google Analytics 4", "Google Tag Manager", "Meta Pixel"],
+                      "marketing_crm": ["Klaviyo"],
+                      "payments": ["Stripe"],
+                      "hosting_cdn": ["Cloudflare"],
+                      "security_compliance": ["OneTrust"]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/detect": {
+      "get": {
+        "summary": "Quick Detect via Query Param",
+        "description": "GET endpoint for easy integration into Google Sheets, Airtable, or simple scripts.",
+        "parameters": [
+          { "name": "url", "in": "query", "schema": { "type": "string", "example": "https://stripe.com" }, "description": "Target website URL" },
+          { "name": "domain", "in": "query", "schema": { "type": "string", "example": "stripe.com" }, "description": "Target domain" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Technographic detection result"
+          }
+        }
+      }
+    },
+    "/v1/batch": {
+      "post": {
+        "summary": "Batch Fingerprint (Up to 5 Domains)",
+        "description": "Concurrently fingerprints multiple domains in a single API call for high-speed table enrichment in Clay.com or n8n.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["domains"],
+                "properties": {
+                  "domains": {
+                    "type": "array",
+                    "items": { "type": "string" },
+                    "example": ["shopify.com", "stripe.com", "webflow.com"],
+                    "description": "List of domains to fingerprint (max 5)"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Batch fingerprint results"
+          }
+        }
+      }
+    },
+    "/v1/technologies": {
+      "get": {
+        "summary": "List Supported Technologies",
+        "description": "Returns the complete catalog of detectable tech signatures and categories.",
+        "responses": {
+          "200": {
+            "description": "Catalog of supported signatures"
+          }
+        }
+      }
+    }
+  }
+}

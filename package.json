@@ -1,0 +1,33 @@
+{
+  "name": "techstack-fingerprinter",
+  "version": "1.0.0",
+  "description": "Sub-millisecond technographic scanner and website tech stack detector for cold outreach, Clay.com, and AI sales agents",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "node --test tests/techstack.test.js"
+  },
+  "keywords": [
+    "techstack",
+    "fingerprinter",
+    "builtwith-alternative",
+    "wappalyzer",
+    "technographics",
+    "lead-enrichment",
+    "cold-email",
+    "shopify-detector",
+    "cloudflare-worker"
+  ],
+  "author": "topaisaas-dev",
+  "license": "MIT",
+  "dependencies": {
+    "hono": "^4.6.14"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241230.0",
+    "typescript": "^5.7.2",
+    "wrangler": "^3.99.0"
+  }
+}
